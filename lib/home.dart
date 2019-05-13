@@ -29,6 +29,7 @@ class HomePage extends StatelessWidget {
     final data = fetchArticles(http.Client());
     print(data);
     return Scaffold(
+      drawer: Drawer(),
       appBar: AppBar(
         title: Text(title),
         actions: <Widget>[

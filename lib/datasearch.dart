@@ -12,7 +12,9 @@ class DataSearch extends SearchDelegate<String> {
     return [
       IconButton(
         icon: Icon(Icons.clear),
-        onPressed: () {},
+        onPressed: () {
+          query = '';
+        },
       )
     ];
   }
@@ -24,7 +26,9 @@ class DataSearch extends SearchDelegate<String> {
         icon: AnimatedIcons.menu_arrow,
         progress: transitionAnimation,
       ),
-      onPressed: () {},
+      onPressed: () {
+        close(context, null);
+      },
     );
   }
 
@@ -36,17 +40,27 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestionList = articles;
-
     return FutureBuilder<List<Article>>(
-      future: suggestionList,
+      future: articles,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasError) print(snapshot.error);
-        print(snapshot.data);
 
-        return snapshot.hasData
-            ? ListViewArticles(articles: snapshot.data)
-            : Center(child: CircularProgressIndicator());
+        if (!snapshot.hasData) {
+          return Center(child: CircularProgressIndicator());
+        }
+        final numberList =
+            snapshot.data.map((article) => article.number).toList();
+        print(numberList[0]);
+
+        final suggestionList = query.isEmpty ? numberList : numberList;
+
+        print(suggestionList);
+        return ListView.builder(
+          itemBuilder: (context, index) => ListTile(
+                title: Text(suggestionList[index]),
+              ),
+          itemCount: suggestionList.length,
+        );
       },
     );
   }
