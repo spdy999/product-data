@@ -11,30 +11,67 @@ class ListViewArticles extends StatelessWidget {
     return Container(
       child: ListView.builder(
           itemCount: articles.length,
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(10.0),
           itemBuilder: (context, position) {
-            return Column(
-              children: <Widget>[
-                Divider(height: 5.0),
-                ListTile(
-                  title: Text(
-                    '${articles[position].number}',
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      color: Colors.deepOrangeAccent,
+            return Row(
+              children: [
+                Expanded(
+                  child: Column(children: [
+                    Text(
+                      '${articles[position].number}',
+                      textAlign: TextAlign.left,
                     ),
+                    Text(
+                      '${articles[position].description}',
+                      textAlign: TextAlign.left,
+                    )
+                  ], crossAxisAlignment: CrossAxisAlignment.start),
+                ),
+                Expanded(
+                  child: Text(
+                    '${articles[position].unitPacks}',
+                    textScaleFactor: 1.8,
+                    textAlign: TextAlign.center,
                   ),
-                  subtitle: Text(
-                    '${articles[position].description} ${articles[position].unitPacks}',
-                    style: new TextStyle(
-                      fontSize: 18.0,
-                      fontStyle: FontStyle.italic,
-                    ),
+                ),
+                Expanded(
+                  child: Text(
+                    '${articles[position].packPrice}',
+                    textScaleFactor: 3.0,
+                    textAlign: TextAlign.right,
                   ),
-                  onTap: () => _onTapItem(context, articles[position]),
+                ),
+                Expanded(
+                  child: Text(
+                    '${articles[position].valueIncludedVat}',
+                    textScaleFactor: 1.8,
+                    textAlign: TextAlign.right,
+                  ),
                 ),
               ],
             );
+            // return Column(
+            //   children: <Widget>[
+            //     Divider(height: 5.0),
+            //     ListTile(
+            //       title: Text(
+            //         '${articles[position].number}',
+            //         style: TextStyle(
+            //           fontSize: 22.0,
+            //           color: Colors.deepOrangeAccent,
+            //         ),
+            //       ),
+            //       subtitle: Text(
+            //         '${articles[position].description} ${articles[position].unitPacks}',
+            //         style: new TextStyle(
+            //           fontSize: 18.0,
+            //           fontStyle: FontStyle.italic,
+            //         ),
+            //       ),
+            //       onTap: () => _onTapItem(context, articles[position]),
+            //     ),
+            //   ],
+            // );
           }),
     );
   }
