@@ -18,14 +18,14 @@ class ListViewPosts extends StatelessWidget {
                 Divider(height: 5.0),
                 ListTile(
                   title: Text(
-                    '${posts[position].title}',
+                    '${posts[position].description}',
                     style: TextStyle(
                       fontSize: 22.0,
                       color: Colors.deepOrangeAccent,
                     ),
                   ),
                   subtitle: Text(
-                    '${posts[position].body}',
+                    '${posts[position].description}',
                     style: new TextStyle(
                       fontSize: 18.0,
                       fontStyle: FontStyle.italic,
@@ -37,7 +37,7 @@ class ListViewPosts extends StatelessWidget {
                         backgroundColor: Colors.blueAccent,
                         radius: 35.0,
                         child: Text(
-                          'User ${posts[position].userId}',
+                          'User ${posts[position].number}',
                           style: TextStyle(
                             fontSize: 22.0,
                             color: Colors.white,
@@ -56,6 +56,6 @@ class ListViewPosts extends StatelessWidget {
 
   void _onTapItem(BuildContext context, Post post) {
     Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text(post.id.toString() + ' - ' + post.title)));
+        content: new Text(post.number.toString() + ' - ' + post.description)));
   }
 }

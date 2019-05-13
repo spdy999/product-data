@@ -7,8 +7,7 @@ import 'post.dart';
 import 'listposts.dart';
 
 Future<List<Post>> fetchPosts(http.Client client) async {
-  final response =
-      await client.get('https://jsonplaceholder.typicode.com/posts');
+  final response = await client.get('http://192.168.1.35:4001/articles');
 
   return compute(parsePosts, response.body);
 }
