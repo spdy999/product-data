@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'post.dart';
+import 'article.dart';
 
-class ListViewPosts extends StatelessWidget {
-  final List<Post> posts;
+class ListViewArticles extends StatelessWidget {
+  final List<Article> articles;
 
-  ListViewPosts({Key key, this.posts}) : super(key: key);
+  ListViewArticles({Key key, this.articles}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ListView.builder(
-          itemCount: posts.length,
+          itemCount: articles.length,
           padding: const EdgeInsets.all(15.0),
           itemBuilder: (context, position) {
             return Column(
@@ -18,14 +18,14 @@ class ListViewPosts extends StatelessWidget {
                 Divider(height: 5.0),
                 ListTile(
                   title: Text(
-                    '${posts[position].description}',
+                    '${articles[position].description}',
                     style: TextStyle(
                       fontSize: 22.0,
                       color: Colors.deepOrangeAccent,
                     ),
                   ),
                   subtitle: Text(
-                    '${posts[position].description}',
+                    '${articles[position].description}',
                     style: new TextStyle(
                       fontSize: 18.0,
                       fontStyle: FontStyle.italic,
@@ -37,7 +37,7 @@ class ListViewPosts extends StatelessWidget {
                         backgroundColor: Colors.blueAccent,
                         radius: 35.0,
                         child: Text(
-                          'User ${posts[position].number}',
+                          'User ${articles[position].number}',
                           style: TextStyle(
                             fontSize: 22.0,
                             color: Colors.white,
@@ -46,7 +46,7 @@ class ListViewPosts extends StatelessWidget {
                       )
                     ],
                   ),
-                  onTap: () => _onTapItem(context, posts[position]),
+                  onTap: () => _onTapItem(context, articles[position]),
                 ),
               ],
             );
@@ -54,8 +54,9 @@ class ListViewPosts extends StatelessWidget {
     );
   }
 
-  void _onTapItem(BuildContext context, Post post) {
+  void _onTapItem(BuildContext context, Article article) {
     Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text(post.number.toString() + ' - ' + post.description)));
+        content:
+            new Text(article.number.toString() + ' - ' + article.description)));
   }
 }
