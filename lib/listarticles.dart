@@ -82,35 +82,7 @@ class ListViewArticles extends StatelessWidget {
                 ],
               )
             ], crossAxisAlignment: CrossAxisAlignment.start);
-            // return Column(
-            //   children: <Widget>[
-            //     Divider(height: 5.0),
-            //     ListTile(
-            //       title: Text(
-            //         '${articles[position].number}',
-            //         style: TextStyle(
-            //           fontSize: 22.0,
-            //           color: Colors.deepOrangeAccent,
-            //         ),
-            //       ),
-            //       subtitle: Text(
-            //         '${articles[position].description} ${articles[position].unitPacks}',
-            //         style: new TextStyle(
-            //           fontSize: 18.0,
-            //           fontStyle: FontStyle.italic,
-            //         ),
-            //       ),
-            //       onTap: () => _onTapItem(context, articles[position]),
-            //     ),
-            //   ],
-            // );
           }),
     );
-  }
-
-  void _onTapItem(BuildContext context, Article article) {
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content:
-            new Text(article.number.toString() + ' - ' + article.description)));
   }
 }
