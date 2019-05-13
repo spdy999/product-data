@@ -18,33 +18,18 @@ class ListViewArticles extends StatelessWidget {
                 Divider(height: 5.0),
                 ListTile(
                   title: Text(
-                    '${articles[position].description}',
+                    '${articles[position].number}',
                     style: TextStyle(
                       fontSize: 22.0,
                       color: Colors.deepOrangeAccent,
                     ),
                   ),
                   subtitle: Text(
-                    '${articles[position].description}',
+                    '${articles[position].description} ${articles[position].unitPacks}',
                     style: new TextStyle(
                       fontSize: 18.0,
                       fontStyle: FontStyle.italic,
                     ),
-                  ),
-                  leading: Column(
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.blueAccent,
-                        radius: 35.0,
-                        child: Text(
-                          'User ${articles[position].number}',
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
-                    ],
                   ),
                   onTap: () => _onTapItem(context, articles[position]),
                 ),
