@@ -13,43 +13,74 @@ class ListViewArticles extends StatelessWidget {
           itemCount: articles.length,
           padding: const EdgeInsets.all(10.0),
           itemBuilder: (context, position) {
-            return Row(
-              children: [
-                Expanded(
-                  child: Column(children: [
-                    Text(
-                      '${articles[position].number}',
+            return Column(children: [
+              Text(
+                '${articles[position].number}',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 22.0,
+                  color: Colors.deepOrangeAccent,
+                ),
+              ),
+              Text(
+                '${articles[position].description}',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.deepOrangeAccent,
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Unit Packs',
+                      textScaleFactor: 1.0,
                       textAlign: TextAlign.left,
                     ),
-                    Text(
-                      '${articles[position].description}',
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Pack Price',
+                      textScaleFactor: 1.0,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Value Included Vat',
+                      textScaleFactor: 1.0,
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      '${articles[position].unitPacks}',
+                      textScaleFactor: 1.8,
                       textAlign: TextAlign.left,
-                    )
-                  ], crossAxisAlignment: CrossAxisAlignment.start),
-                ),
-                Expanded(
-                  child: Text(
-                    '${articles[position].unitPacks}',
-                    textScaleFactor: 1.8,
-                    textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Text(
-                    '${articles[position].packPrice}',
-                    textScaleFactor: 3.0,
-                    textAlign: TextAlign.right,
+                  Expanded(
+                    child: Text(
+                      '${articles[position].packPrice}',
+                      textScaleFactor: 3.0,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Text(
-                    '${articles[position].valueIncludedVat}',
-                    textScaleFactor: 1.8,
-                    textAlign: TextAlign.right,
+                  Expanded(
+                    child: Text(
+                      '${articles[position].valueIncludedVat}',
+                      textScaleFactor: 1.8,
+                      textAlign: TextAlign.right,
+                    ),
                   ),
-                ),
-              ],
-            );
+                ],
+              )
+            ], crossAxisAlignment: CrossAxisAlignment.start);
             // return Column(
             //   children: <Widget>[
             //     Divider(height: 5.0),
