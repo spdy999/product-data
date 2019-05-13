@@ -13,6 +13,7 @@ class ListViewArticles extends StatelessWidget {
           itemCount: articles.length,
           padding: const EdgeInsets.all(10.0),
           itemBuilder: (context, position) {
+            if (position.isOdd) return Divider();
             return Column(children: [
               Text(
                 '${articles[position].number}',

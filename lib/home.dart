@@ -28,6 +28,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          )
+        ],
       ),
       body: FutureBuilder<List<Article>>(
         future: fetchArticles(http.Client()),
