@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'article.dart';
-import 'listarticles.dart';
 
 class DataSearch extends SearchDelegate<String> {
   final Future<List<Article>> articles;
@@ -34,8 +33,11 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    return null;
+    return Card(
+      child: Center(
+        child: Text(query),
+      ),
+    );
   }
 
   @override
@@ -49,9 +51,14 @@ class DataSearch extends SearchDelegate<String> {
           return Center(child: CircularProgressIndicator());
         }
         var numberList = [];
+        var newObject = {};
         for (var i = 0; i < snapshot.data.length; i++) {
-          numberList.add(snapshot.data[i].number);
+          var number = snapshot.data[i].number;
+          numberList.add(number);
+          newObject[number] = snapshot.data[i];
         }
+        print('newObject//////////////////////////////////////////');
+        print(newObject);
 
         final suggestionList = query.isEmpty
             ? ['8850348204071', '8851932369001', '8851932369411']
@@ -59,6 +66,9 @@ class DataSearch extends SearchDelegate<String> {
 
         return ListView.builder(
           itemBuilder: (context, index) => ListTile(
+                onTap: () {
+                  showResults(context);
+                },
                 title: RichText(
                   text: TextSpan(
                       text: suggestionList[index].substring(0, query.length),
